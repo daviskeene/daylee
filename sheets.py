@@ -62,7 +62,10 @@ def get_all_formatted_records(sheet):
             date = datetime.strptime(x["Due Date"], "%m/%d/%y")
         except:
             # On exception, change date
-            records[i]['Due Date'] = '/'.join(record['Due Date'].split('/')[:-1]) + f'/{str(datetime.today().year)[2:]}'
+            records[i]["Due Date"] = (
+                "/".join(record["Due Date"].split("/")[:-1])
+                + f"/{str(datetime.today().year)[2:]}"
+            )
     # print(records)
     return records
 

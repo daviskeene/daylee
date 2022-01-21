@@ -15,6 +15,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
+
 def send_email():
     sender_email = "uiuc.schooldigest@gmail.com"
     receiver_email = "dbkeene.tsyc@gmail.com"
@@ -35,7 +36,6 @@ def send_email():
         reminders = sh.get_records(sheet, "Reminder")
 
         return [assignments, quizzes, exams, reminders]
-
 
     def format_records(record: list):
         html_str = ""
@@ -91,8 +91,9 @@ def send_email():
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, message.as_string())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     scheduler = BackgroundScheduler()
-    job = scheduler.add_job(send_email, 'cron', day_of_week='mon-sun', hour=9, minute=0)
+    job = scheduler.add_job(send_email, "cron", day_of_week="mon-sun", hour=9, minute=0)
     scheduler.start()
     app.run(host="0.0.0.0")
