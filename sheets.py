@@ -59,7 +59,7 @@ def get_all_formatted_records(sheet):
     # Convert date if not in correct format
     for i, record in enumerate(records):
         try:
-            date = datetime.strptime(x["Due Date"], "%m/%d/%y")
+            date = datetime.strptime(record["Due Date"], "%m/%d/%y")
         except:
             # On exception, change date
             records[i]["Due Date"] = (
