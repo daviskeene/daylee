@@ -40,9 +40,16 @@ def send_email():
     def format_records(record: list):
         html_str = ""
         for r in record:
-            html_str += f"""
-                <b> {r['Course Code']} </b> - {r['Name']} ({r['Due Date']})<br>
-            """
+            if r["Complete"] == "x":
+                html_str += f"""
+                    <del>
+                        <b> {r['Course Code']} </b> - {r['Name']} ({r['Due Date']})<br>
+                    </del>
+                """
+            else:
+                html_str += f"""
+                    <b> {r['Course Code']} </b> - {r['Name']} ({r['Due Date']})<br>
+                """
         return html_str
 
     records = get_bulk_records()
@@ -77,7 +84,8 @@ def send_email():
     </html>
     """
 
-    print(html)
+    # Un-comment to see HTML before it's sent
+    # print(html)
 
     # Turn these into plain/html MIMEText objects
     html = MIMEText(html, "html")

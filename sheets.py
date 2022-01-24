@@ -72,13 +72,16 @@ def get_all_formatted_records(sheet):
 
 def get_records(sheet, type: str, days: int = 7):
     # Get record of type 'type' due within a certain amount of days (default = 7).
-    return [
+    records = [
         x
         for x in get_all_formatted_records(sheet)
         if x["Type"] == type
         and datetime.strptime(x["Due Date"], "%m/%d/%y")
         < datetime.now() + timedelta(days=days)
     ]
+
+    # Sort records by class, then by assignment date
+    return sorted(records, key=lambda x: (x["Course Code"], x["Due Date"]))
 
 
 def main():
