@@ -78,6 +78,7 @@ def get_records(sheet, type: str, days: int = 7):
         if x["Type"] == type
         and datetime.strptime(x["Due Date"], "%m/%d/%y")
         < datetime.now() + timedelta(days=days)
+        and datetime.strptime(x["Due Date"], "%m/%d/%y") >= datetime.now()
     ]
 
     # Sort records by class, then by assignment date

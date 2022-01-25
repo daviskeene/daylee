@@ -102,6 +102,9 @@ def send_email():
 
 if __name__ == "__main__":
     scheduler = BackgroundScheduler()
-    job = scheduler.add_job(send_email, "cron", day_of_week="mon-sun", hour=9, minute=0)
+    # Need to adjust time of day based on where PythonAnywhere server is located.
+    # 9:00 AM CDT => 3:00 AM
+    # So, the time here will be adjusted to hour=15
+    job = scheduler.add_job(send_email, "cron", day_of_week="mon-sun", hour=15, minute=0)
     scheduler.start()
     app.run(host="0.0.0.0")
