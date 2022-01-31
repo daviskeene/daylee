@@ -1,6 +1,6 @@
-# School Digest
+# Daylee
 
-School Digest is a Flask application to send me a daily digest of assignments, quizzes, exams, and reminders within the next 7 days.
+Daylee is a reminder tool that sends me a daily digest of assignments, quizzes, exams, and reminders within the next 7 days.
 
 I created this project to give myself better visibility into what I have to do for school.
 
